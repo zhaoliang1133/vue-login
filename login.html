@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="login">
+    <meta name="author" content="zhao liang">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/antd.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/vue.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+</head>
+<body id="particles-js">
+<div id="app-5">
+    <div class="form">
+        <div class="logo">
+            <h1 style="color: #fff">
+                登录界面
+            </h1>
+        </div>
+        <form class="ant-form ant-form-horizontal login-form">
+            <div class="ant-row ant-form-item">
+                <div class="ant-form-item-control-wrapper">
+                    <div class="ant-form-item-control">
+                        <span class="ant-input-affix-wrapper">
+                            <span class="ant-input-prefix">
+                                <i class="anticon anticon-user"></i>
+                            </span>
+                            <input v-model="username" placeholder="Username" type="text" class="ant-input ant-input-lg">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ant-row ant-form-item">
+                <div class="ant-form-item-control-wrapper">
+                    <div class="ant-form-item-control">
+                        <span class="ant-input-affix-wrapper">
+                            <span class="ant-input-prefix">
+                                <i class="anticon anticon-lock"></i>
+                            </span>
+                            <input v-model="password" placeholder="Password" type="password" class="ant-input ant-input-lg">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="ant-row ant-form-item">
+            <div class="ant-form-item-control-wrapper">
+                <div class="ant-form-item-control has-success">
+                    <button @click="login" class="ant-btn login-form-button ant-btn-primary ant-btn-lg">
+                        <h2 style="color: #fff">
+                            登录
+                        </h2>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/particles.min.js"></script>
+<script>
+    const app5 = new Vue({
+        el: '#app-5',
+        data: {
+            username: 'admin',
+            password: '123456',
+            submitting: false
+        },
+        computed: {
+            btnClass: function () {
+                return {
+                    'ant-btn-loading': this.submitting
+                }
+            }
+        },
+        methods: {
+            login: function () {
+                this.submitting = true;
+                let formData = new FormData();
+                formData.append('username', this.username);
+                formData.append('password', this.password);
+                window.location.href = "index.html";
+//                axios.post('/api/auth/login', formData).then((response) => {
+//                    if (response.data.data.success) {
+//                        window.location.href = response.data.data.next;
+//                    }
+//                    this.submitting = false
+//                }).catch((error) => {
+//                    this.submitting = false
+//                })
+            }
+        }
+    })
+    particlesJS("particles-js", {
+        "particles": {
+            "number": {
+                "value": 100,
+                "density": {
+                    "enable": true,
+                    "value_area": 1000
+                }
+            },
+            "color": {
+                "value": "#ffffff"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 100,
+                    "height": 100
+                }
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 40,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 6,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 140,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    });
+</script>
+</body>
+</html>
